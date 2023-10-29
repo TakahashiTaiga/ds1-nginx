@@ -6,7 +6,6 @@ services:
     command: tail -f /dev/null
     networks:
       ds1-container-network:
-
     ports:
       - 80:80
       - 443:443
@@ -18,6 +17,8 @@ services:
 
   certbot:
     image: certbot/certbot:v1.7.0
+    networks:
+      ds1-container-network:
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/www/html:/var/www/html
