@@ -17,6 +17,7 @@ services:
 
   certbot:
     image: certbot/certbot:v1.7.0
+    command: tail -f /dev/null
     networks:
       ds1-container-network:
     volumes:
