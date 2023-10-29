@@ -3,6 +3,10 @@ services:
   nginx:
     container_name: ds1-nginx
     build: ./docker
+    command: tail -f /dev/null
+    networks:
+      ds1-container-network:
+
     ports:
       - 80:80
       - 443:443
@@ -10,7 +14,7 @@ services:
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/www/html:/var/www/html
-    network_mode: host
+      - /home/nginx:/usr/share/nginx:ro
 
   certbot:
     image: certbot/certbot:v1.7.0
@@ -18,3 +22,10 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/www/html:/var/www/html
     command: ["--version"]
+
+networks:
+  ds1-container-network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.254.249.0/24
