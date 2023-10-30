@@ -13,7 +13,6 @@ services:
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/www/html:/var/www/html
-      - /home/nginx:/usr/share/nginx:ro
 
   certbot:
     image: certbot/certbot:v1.7.0
