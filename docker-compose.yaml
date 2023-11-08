@@ -29,4 +29,6 @@ services:
       - /var/www/html:/var/www/html
 
 networks:
-  ds1-container-network:
+  default:
+    name: ds1-container-network
+    external: true
