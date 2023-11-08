@@ -2,9 +2,7 @@ version: "3"
 services:
   nginx:
     container_name: ds1-nginx
-    build: ./docker
-    networks:
-      ipv4_address: 10.0.0.1  
+    build: ./docker 
     ports:
       - 80:80
       - 443:443
@@ -20,8 +18,6 @@ services:
       tail -f /dev/null
       ["--version"]
       '
-    networks:
-      ipv4_address: 10.0.0.2
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/www/html:/var/www/html
